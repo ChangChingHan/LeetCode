@@ -14,10 +14,8 @@ public:
             return head;
         
         if (head->val == head->next->val) {
-            while (head->val == head->next->val) {
+            while (head->next != NULL && head->val == head->next->val) {
                 head = head->next;
-                std::cout<<head->val;
-                std::cout<<",";
             }
             head = head->next;
             return deleteDuplicates(head);
