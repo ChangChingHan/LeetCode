@@ -1,3 +1,4 @@
+# https://leetcode.com/problems/reverse-linked-list/
 #include "stdafx.h"
 
 struct linkedlist
@@ -69,3 +70,31 @@ void reverseLinkedList()
 
 	p = f;
 }
+
+/*recursive solution*/
+class Solution {
+public:
+    ListNode* reverse(ListNode* p, ListNode* q) {
+        if(q == NULL) return NULL;
+        else 
+        {
+            ListNode* nxp = q;
+            ListNode* nxq = q->next;
+            q->next = p;
+            
+            if (nxq == NULL) {
+                return nxp;
+            } else
+                return reverse(nxp,nxq);
+        }
+    }
+    
+    ListNode* reverseList(ListNode* head) {
+        ListNode* result;
+        if (head != NULL) {
+            return reverse(NULL,head);
+        } else {
+            return NULL;
+        }
+    }
+};
